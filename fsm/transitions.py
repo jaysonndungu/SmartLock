@@ -20,8 +20,14 @@ class Transition:
 
         if current_state != self.from_state:
             return False
-        if self.trigger != trigger:
-            return False
+        
+        # If this transition has a trigger, it must match
+        if self.trigger is not None:
+            if trigger != self.trigger:
+                return False
+        
+        # If this transition has no trigger, it's automatic (process_event)
+        # and trigger parameter should be None
         return True
         
 #Define all possible transitions
@@ -34,11 +40,15 @@ TRANSITIONS = {
     ),
     "unlock_complete": Transition(
         from_state = State.UNLOCKING,    #In this state, the doorknob is held up
-        to_State = State.UNLOCKED
+        to_state = State.UNLOCKED
     ),
     "lock_initiated": Transition(       #In this state, the doorknob is slowly let down
         from_state = State.UNLOCKED,
         to_state = State.LOCKING,
+    ),
+    "lock_complete": Transition(
+        from_state = State.LOCKING,
+        to_state = State.LOCKED
     ), 
     "lock_error": Transition(
         from_state = State.LOCKING,    #Error while door knob is being let down

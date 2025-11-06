@@ -1,18 +1,17 @@
 from .states import State
-from transitions import Transition, TRANSITIONS
+from .transitions import Transition, TRANSITIONS
 import threading
 
 class StateMachine:
 
-    def __init(self, initial_state: State = State.LOCKED):
+    def __init__(self, initial_state: State = State.LOCKED):
         self.current_state = initial_state
         self.transitions = TRANSITIONS.copy()
         self.state_handler = {}
-        self.lock = threading.Lock()
+        self.lock = threading.Lock() #to prevent race condition
 
     def set_state_handler(self, state: State, handler):
         self.state_handler[state] = handler
-
 
     def get_state(self):
         return self.current_state
