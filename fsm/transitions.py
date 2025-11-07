@@ -49,14 +49,6 @@ TRANSITIONS = {
     "lock_complete": Transition(
         from_state = State.LOCKING,
         to_state = State.LOCKED
-    ), 
-    "lock_error": Transition(
-        from_state = State.LOCKING,    #Error while door knob is being let down
-        to_state = State.ERROR,
-    ),
-    "unlock_error": Transition(
-        from_state = State.UNLOCKING,  #Error while door knob is being let up
-        to_state = State.ERROR,
     ),
     
 }

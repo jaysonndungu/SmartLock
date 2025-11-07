@@ -55,9 +55,6 @@ class StateMachine:
     def is_unlocked(self):
         return self.current_state == State.UNLOCKED
     
-    def is_error(self):
-        return self.current_state == State.ERROR
-    
     def is_unlocking(self):
         return self.current_state == State.UNLOCKING
     

@@ -5,4 +5,3 @@ class State(Enum):
     UNLOCKING = "unlocking"          # Door is unlocking
     UNLOCKED = "unlocked"            # Door is unlocked
     LOCKING = "locking"              # Door is locking
-    ERROR = "error"                  # Error occurred
