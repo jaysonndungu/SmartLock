@@ -48,7 +48,7 @@ class StateMachine:
                 return False
         return True
 
-
+#move to a different place
     def is_locked(self):
         return self.current_state == State.LOCKED
     
