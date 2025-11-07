@@ -127,11 +127,6 @@ state_machine.set_state_handler(State.UNLOCKING, on_unlocking)
 state_machine.trigger("authenticated")
 ```
 
-## Development
-
-### Testing
-- Use `test_main.py` to test state machine logic without hardware
-- All state transitions and handlers are tested
 
 ### Code Structure
 - **FSM Module**: Handles all state management and transitions
@@ -140,11 +135,11 @@ state_machine.trigger("authenticated")
 
 ## License
 
-[Add your license here]
+[Coming Soon]
 
 ## Contributing
 
-[Add contribution guidelines here]
+[Coming Soon]
 
 ## Repository
 
