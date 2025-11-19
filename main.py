@@ -28,11 +28,11 @@ def unlock_door():
         print("✅ Door unlocked - handle is up")
         # Trigger transition to UNLOCKED
         state_machine.process_event("unlock_complete")
-        
-        # Wait 5 seconds with door unlocked
+    
+    def on_unlocked():
+        """Handler for UNLOCKED state - wait then auto-lock."""
         print("⏳ Waiting 5 seconds (door open)...")
         time.sleep(5)
-        
         # Automatically trigger lock after wait
         print("🔒 Auto-locking door (rack down, handle lowers)...")
         state_machine.process_event("lock_initiated")
@@ -49,6 +49,7 @@ def unlock_door():
     
     # Register handlers
     state_machine.set_state_handler(State.UNLOCKING, on_unlocking)
+    state_machine.set_state_handler(State.UNLOCKED, on_unlocked)
     state_machine.set_state_handler(State.LOCKING, on_locking)
     
     try:
