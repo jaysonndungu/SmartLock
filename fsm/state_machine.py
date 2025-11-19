@@ -8,7 +8,7 @@ class StateMachine:
         self.current_state = initial_state
         self.transitions = TRANSITIONS.copy()
         self.state_handler = {}
-        self.lock = threading.Lock() #to prevent race condition
+        self.lock = threading.RLock()  # Reentrant lock - allows same thread to acquire multiple times
 
     def set_state_handler(self, state: State, handler):
         self.state_handler[state] = handler
@@ -16,7 +16,6 @@ class StateMachine:
     def get_state(self):
         return self.current_state
 
-    
     #Trigger a transition
     def trigger(self, trigger_name: str):
 

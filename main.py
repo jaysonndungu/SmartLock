@@ -25,17 +25,21 @@ def unlock_door():
         motor.open()  # open() = unlock = rack goes up
         time.sleep(2)  # Motor runs for 2 seconds to lift handle
         motor.stop()
-        print("✅ Door unlocked - handle is up")
+        print("Door unlocked - handle is up")
         # Trigger transition to UNLOCKED
-        state_machine.process_event("unlock_complete")
+        print("DEBUG: Calling process_event('unlock_complete')...")
+        result = state_machine.process_event("unlock_complete")
+        print(f"DEBUG: process_event returned: {result}")
     
     def on_unlocked():
         """Handler for UNLOCKED state - wait then auto-lock."""
-        print("⏳ Waiting 5 seconds (door open)...")
+        print("DEBUG: on_unlocked() handler called!")
+        print("Waiting 5 seconds (door open)...")
         time.sleep(5)
         # Automatically trigger lock after wait
-        print("🔒 Auto-locking door (rack down, handle lowers)...")
-        state_machine.process_event("lock_initiated")
+        print("Auto-locking door (rack down, handle lowers)...")
+        result = state_machine.process_event("lock_initiated")
+        print(f"DEBUG: lock_initiated returned: {result}")
     
     def on_locking():
         """Handler for LOCKING state - lowers door handle."""
@@ -43,7 +47,7 @@ def unlock_door():
         motor.close()  # close() = lock = rack goes down
         time.sleep(2)  # Motor runs for 2 seconds to lower handle
         motor.stop()
-        print("✅ Door locked - handle is down")
+        print("Door locked - handle is down")
         # Trigger transition to LOCKED
         state_machine.process_event("lock_complete")
     
