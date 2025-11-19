@@ -33,6 +33,7 @@ smart-lock/
 - Motor controller (L298N H-Bridge or similar)
 - DC Motor for lock mechanism
 - Bluetooth module (for phone connectivity)
+- 3D printed Rack and Pinion
 
 ## Pin Configuration
 
