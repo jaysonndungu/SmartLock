@@ -4,12 +4,11 @@ from config.settings import MOTOR_PIN, IN1_PIN, IN2_PIN, SPEED
 class MotorController:
     def __init__(self):
         print(f"DEBUG: Initializing motor with pins: IN1={IN1_PIN}, IN2={IN2_PIN}, ENABLE={MOTOR_PIN}, SPEED={SPEED}")
-        # For H-bridge with separate enable pin, use Motor without enable parameter
-        # The enable pin should be connected to VCC or controlled separately
-        # gpiozero Motor uses PWM on forward/backward pins directly
+        # For H-bridge with separate enable pin (like L298N)
         self.motor = Motor(
-            forward = IN1_PIN,  # Pin 23
-            backward = IN2_PIN, # Pin 24
+            forward = IN1_PIN,   # Pin 23 - forward direction
+            backward = IN2_PIN, # Pin 24 - backward direction
+            enable = MOTOR_PIN, # Pin 18 - enable pin (PWM for speed control)
             pwm = True
         )
         print("DEBUG: Motor initialized successfully")
