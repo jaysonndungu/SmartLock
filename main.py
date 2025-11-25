@@ -23,7 +23,7 @@ def unlock_door():
         """Handler for UNLOCKING state - lifts door handle."""
         print("🔓 Unlocking door (rack up, handle lifts)...")
         motor.open()  # open() = unlock = rack goes up
-        time.sleep(2)  # Motor runs for 2 seconds to lift handle
+        time.sleep(5)  # Motor runs for 5 seconds to lift handle
         motor.stop()
         print("Door unlocked - handle is up")
         # Trigger transition to UNLOCKED
@@ -45,7 +45,7 @@ def unlock_door():
         """Handler for LOCKING state - lowers door handle."""
         print("🔒 Locking door (rack down, handle lowers)...")
         motor.close()  # close() = lock = rack goes down
-        time.sleep(2)  # Motor runs for 2 seconds to lower handle
+        time.sleep(5)  # Motor runs for 5 seconds to lower handle
         motor.stop()
         print("Door locked - handle is down")
         # Trigger transition to LOCKED
